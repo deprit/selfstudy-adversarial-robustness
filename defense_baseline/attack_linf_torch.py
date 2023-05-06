@@ -14,17 +14,17 @@
 
 """Placeholder for L_{inf} attack."""
 
+import numpy as np
 import common.framework
-
 
 class LinfAttack(common.framework.Attack):
 
     def attack(self, model, x, y):
-
+        x = x + np.sign(np.random.normal(size=x.shape)) * self.task.threshold
         return x
 
 # # If writing attack which operates on batch of examples is too complicated
-# # then remove LinfAttack and uncommend LinfAttackNonBatched from below:
+# # then remove LinfAttack and uncomment LinfAttackNonBatched from below:
 #
 # class LinfAttackNonBatched(common.framework.NonBatchedAttack):
 #
